@@ -1,9 +1,8 @@
 package modelo;
 
-import armas.CargaProfundidad;
-
 public class Buque extends ObjetoJuego implements EntidadMovil {
-    public static final int PROFUNDIDAD = 0;
+    //los buques transitan siempre a profundidad cero.
+	public static final int PROFUNDIDAD = 0;
 
     private final boolean derecha;
     private double velocidad;
