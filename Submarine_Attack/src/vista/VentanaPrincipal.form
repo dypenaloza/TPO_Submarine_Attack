@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="vista.VentanaPrincipal">
+  <grid id="27dc6" binding="panelPrincipal" layout-manager="CardLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="fda89" binding="menu" layout-manager="GridLayoutManager" row-count="6" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <card name="MENU"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="ebe4c" class="javax.swing.JButton" binding="jugarButton" default-binding="true">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Jugar"/>
+            </properties>
+          </component>
+          <component id="204c9" class="javax.swing.JButton" binding="instruccionesButton" default-binding="true">
+            <constraints>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Instrucciones"/>
+            </properties>
+          </component>
+          <component id="3bd3c" class="javax.swing.JButton" binding="salirButton" default-binding="true">
+            <constraints>
+              <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Salir"/>
+            </properties>
+          </component>
+          <component id="455e5" class="javax.swing.JLabel" binding="tituloLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Impact" size="36" style="1"/>
+              <text value="Submarine Attack"/>
+            </properties>
+          </component>
+          <hspacer id="9edc5">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </hspacer>
+          <hspacer id="aa563">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </hspacer>
+        </children>
+      </grid>
+      <grid id="f1d02" binding="juego" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints>
+          <card name="JUEGO"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <grid id="f467e" binding="hud" layout-manager="GridLayoutManager" row-count="1" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints border-constraint="North"/>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="ebb85" class="javax.swing.JLabel" binding="vidasLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Vidas: 3"/>
+                </properties>
+              </component>
+              <component id="954f5" class="javax.swing.JLabel" binding="saludLabel">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Salud: 100%"/>
+                </properties>
+              </component>
+              <component id="150a9" class="javax.swing.JLabel" binding="puntajeLabel">
+                <constraints>
+                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Puntaje: 0"/>
+                </properties>
+              </component>
+              <component id="f8e31" class="javax.swing.JLabel" binding="nivelLabel">
+                <constraints>
+                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Nivel 1"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="7da2c" binding="campo" custom-create="true" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints border-constraint="Center"/>
+            <properties/>
+            <border type="none"/>
+            <children/>
+          </grid>
+        </children>
+      </grid>
+      <grid id="f4643" binding="gameOver" layout-manager="GridLayoutManager" row-count="6" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <card name="GAME_OVER"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="de2" class="javax.swing.JLabel" binding="gameOverLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Impact" size="36" style="1"/>
+              <text value="Game Over"/>
+            </properties>
+          </component>
+          <component id="e5905" class="javax.swing.JButton" binding="jugardeNuevoButton">
+            <constraints>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Jugar de nuevo"/>
+            </properties>
+          </component>
+          <component id="8e469" class="javax.swing.JButton" binding="salirGameOverButton">
+            <constraints>
+              <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Salir"/>
+            </properties>
+          </component>
+          <component id="b62c8" class="javax.swing.JLabel" binding="puntajeFinalLabel">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Puntaje Final:"/>
+            </properties>
+          </component>
+          <hspacer id="f1c3b">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </hspacer>
+          <hspacer id="424ca">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </hspacer>
+        </children>
+      </grid>
+      <grid id="a97ac" binding="instrucciones" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints>
+          <card name="INSTRUCCIONES"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="37a2d" class="javax.swing.JButton" binding="volverInstrucciones">
+            <constraints border-constraint="South"/>
+            <properties>
+              <text value="Volver"/>
+            </properties>
+          </component>
+          <component id="6b802" class="javax.swing.JLabel" binding="txtInstrucciones">
+            <constraints border-constraint="Center"/>
+            <properties>
+              <text value="Instrucciones"/>
+              <verticalAlignment value="0"/>
+              <verticalTextPosition value="0"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
