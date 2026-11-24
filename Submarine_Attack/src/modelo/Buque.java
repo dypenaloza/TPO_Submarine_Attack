@@ -4,15 +4,18 @@ public class Buque extends ObjetoJuego implements EntidadMovil {
     //los buques transitan siempre a profundidad cero.
 	public static final int PROFUNDIDAD = 0;
 
-    private final boolean derecha;
+    private boolean derecha;
     private double velocidad;
     private double velocidadCaidaCargas;
+    private int pasadasRestantes;
 
-    public Buque(double x, boolean derecha, double velocidad, double velocidadCaidaCargas) {
+    public Buque(double x, boolean derecha, double velocidad,
+    		     double velocidadCaidaCargas, int pasadas) {
         super(x, PROFUNDIDAD);
         this.derecha = derecha;
         this.velocidad = velocidad;
         this.velocidadCaidaCargas = velocidadCaidaCargas;
+        pasadasRestantes = pasadas;
     }
 
     @Override
@@ -33,8 +36,8 @@ public class Buque extends ObjetoJuego implements EntidadMovil {
         velocidadCaidaCargas *= factor;
     }
 
-    public boolean salioDelCampo(double anchoCampo) {
-        return getPosicionX() < 0 || getPosicionX() > anchoCampo;
+    public boolean salioDelCampo(double limiteHorizontal) {
+        return getPosicionX() < -limiteHorizontal || getPosicionX() > limiteHorizontal;
     }
 
     public boolean isDerecha() {
@@ -47,6 +50,19 @@ public class Buque extends ObjetoJuego implements EntidadMovil {
 
     public double getVelocidadCaidaCargas() {
         return velocidadCaidaCargas;
+    }
+    
+    public int getPasadasRestantes() {
+    	return pasadasRestantes;
+    }
+    
+    public void completarPasada() {
+    	if (pasadasRestantes > 0) {
+    		pasadasRestantes--;
+    	}
+    	if (pasadasRestantes > 0) {
+    		derecha = !derecha;
+    	}	
     }
 }
 
