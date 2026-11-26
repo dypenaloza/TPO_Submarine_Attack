@@ -23,9 +23,9 @@ public class Juego {
 	private int puntos = 0;
 	private int vidas = VIDAS_INICIALES;
 	private int nivel = 1;
-	private boolean gano = false;
 	private int puntosProximaVida = PUNTOS_PARA_VIDA_EXTRA;
 	private int pasos = 0;
+	private EstadoJuego estado;
 
 	private double velocidadBuques = 2.3;
 	private double velocidadCaidaCargas = 1.5;
@@ -36,17 +36,26 @@ public class Juego {
 
 	private List<CargaProfundidad> cargas = new ArrayList<CargaProfundidad>();
 
+	public enum EstadoJuego {
+	    INICIO,
+	    JUGANDO,
+	    PAUSADO,
+	    GAME_OVER,
+	    VICTORIA
+	}
+	
 	public Juego() {
 		inicializarJuego();
 	}
 
 	private void inicializarJuego() {
 		submarino = new Submarino(0, 500);
+		estado = EstadoJuego.INICIO;
 		agregarBuque();
 	}
 
 	public void actualizarJuego() {
-		if (terminado()) {
+		if (estado != EstadoJuego.JUGANDO) {
 			return;
 		}
 		pasos++;
@@ -61,8 +70,12 @@ public class Juego {
 		actualizarBuques();
 		actualizarCargas();
 
+		if (terminado()) {
+		    return;
+		}
+
 		if (serieTerminada()) {
-			subirDeNivel();
+		    subirDeNivel();
 		}
 	}
 
@@ -135,16 +148,24 @@ public class Juego {
 			else
 			{
 				cargaActual.moverse();
+				
 				double distancia = cargaActual.distanciaA(submarino);
 
-				if (distancia < DISTANCIA_CHOQUE)
+				//Si toca al submarino
+				if (!cargaActual.exploto() && distancia < DISTANCIA_CHOQUE)
 				{
 					cargaActual.explotar();
-					perderVida();
 				}
-				else if (cargaActual.exploto())
+				
+				if (cargaActual.exploto())
 				{
 					aplicarExplosion(distancia);
+				
+				
+					if (terminado() )
+					{
+						return;
+					}
 				}
 			}
 		}
@@ -179,8 +200,21 @@ public class Juego {
 	}
 
 	private void perderVida() {
-		vidas--;
-		submarino.restaurarSalud();
+		if (vidas > 0)
+		{
+			vidas--;
+		}
+
+		if (vidas > 0)
+		{
+			submarino.restaurarSalud();
+		}
+		
+		if (vidas == 0)
+		{
+			cambiarEstado(EstadoJuego.GAME_OVER);
+		}
+		
 	}
 
 	private void sumarPuntos(int cantidad) {
@@ -200,7 +234,7 @@ public class Juego {
 		sumarPuntos(PUNTOS_POR_NIVEL);
 		if (nivel == NIVELES_TOTALES)
 		{
-			gano = true;
+			cambiarEstado(EstadoJuego.VICTORIA);
 			return;
 		}
 		nivel++;
@@ -209,13 +243,65 @@ public class Juego {
 		pasosEntreDisparos = (int) (pasosEntreDisparos / AUMENTO_POR_NIVEL);
 		contadorBuquesTotales = 0;
 	}
+	
+	public void cambiarEstado(EstadoJuego nuevoEstado) {
+
+	    if (nuevoEstado == null) {
+	        return;
+	    }
+
+	    //INICIO => solamente podemos comenzar a jugar.
+	    if (estado == EstadoJuego.INICIO) {
+
+	        if (nuevoEstado == EstadoJuego.JUGANDO) {
+	            estado = nuevoEstado;
+	        }
+
+	    }
+
+	    // Mientras jugamos podemos pausar, perder o ganar.
+	    else if (estado == EstadoJuego.JUGANDO) {
+
+	        if (nuevoEstado == EstadoJuego.PAUSADO) {
+	            estado = nuevoEstado;
+	        }
+
+	        else if (nuevoEstado == EstadoJuego.GAME_OVER
+	                && vidas == 0) {
+
+	            estado = nuevoEstado;
+	        }
+
+	        else if (nuevoEstado == EstadoJuego.VICTORIA
+	                && nivel == NIVELES_TOTALES
+	                && serieTerminada()) {
+
+	            estado = nuevoEstado;
+	        }
+
+	    }
+
+	    //PAUSADO => solamente podemos reanudar.
+	    else if (estado == EstadoJuego.PAUSADO) {
+
+	        if (nuevoEstado == EstadoJuego.JUGANDO) {
+	            estado = nuevoEstado;
+	        }
+
+	    }
+
+	}
+	
 
 	public boolean terminado() {
-		return vidas <= 0 || gano;
+
+	    return estado == EstadoJuego.GAME_OVER
+	            || estado == EstadoJuego.VICTORIA;
 	}
 
 	public boolean gano() {
-		return gano;
+
+	    return estado == EstadoJuego.VICTORIA;
 	}
 
 	public void subirSubmarino() {
@@ -262,5 +348,9 @@ public class Juego {
 
 	public int getNivel() {
 		return nivel;
+	}
+	
+	public EstadoJuego getEstado() {
+	    return estado;
 	}
 }

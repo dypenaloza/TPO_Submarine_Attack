@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.Timer;
 import modelo.Juego;
+import modelo.Juego.EstadoJuego;
 import persistencia.PersistenciaDatos;
 import vista.VentanaPrincipal;
 
@@ -65,6 +66,7 @@ public class ControladorJuego implements ActionListener, KeyListener {
 
     private void iniciarPartida() {
         juego = new Juego();
+        juego.cambiarEstado(EstadoJuego.JUGANDO);
         vista.getPanelJuego().setJuego(juego);
         vista.actualizarSalud(juego.getSubmarino().getSalud());
         actualizarVista();
@@ -110,7 +112,31 @@ public class ControladorJuego implements ActionListener, KeyListener {
     public void keyPressed(KeyEvent e) {
         if (juego == null || juego.terminado()) {
             return;
+        } 
+        
+        if (juego == null || juego.terminado()) {
+            return;
         }
+
+        if (e.getKeyCode() == KeyEvent.VK_P) {
+
+            if (juego.getEstado() == Juego.EstadoJuego.JUGANDO) {
+
+                juego.cambiarEstado(Juego.EstadoJuego.PAUSADO);
+
+            } else if (juego.getEstado() == Juego.EstadoJuego.PAUSADO) {
+
+                juego.cambiarEstado(Juego.EstadoJuego.JUGANDO);
+            }
+
+            return;
+        }
+
+        // Si no estamos jugando, no permitir movimientos
+        if (juego.getEstado() != Juego.EstadoJuego.JUGANDO) {
+            return;
+        }
+        
         switch (e.getKeyCode()) {
             case KeyEvent.VK_UP:
                 juego.subirSubmarino();

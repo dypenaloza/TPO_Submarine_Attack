@@ -15,6 +15,7 @@ import modelo.Buque;
 import modelo.CargaProfundidad;
 import modelo.Juego;
 import modelo.Submarino;
+import java.awt.Font;
 
 public class PanelJuego extends JPanel implements ActionListener {
     private static final int ALTO_CIELO = 80;
@@ -80,14 +81,21 @@ public class PanelJuego extends JPanel implements ActionListener {
             return;
         }
 
-        for (Buque buque : juego.getBuquesActivos()) {
+        for (Buque buque : juego.getBuquesActivos())
+        {
             int x = aPixelX(buque.getPosicionX());
             int y = aPixelY(buque.getPosicionY());
-            if (buque.isDerecha()) {
+            if (buque.isDerecha())
+            {
                 g.drawImage(imagenBarco, x - 30, y - 22, 60, 27, null);
-            } else {
+            } else
+            {
                 g.drawImage(imagenBarco, x + 30, y - 22, -60, 27, null);
             }
+        }
+        
+        if (juego.getEstado() == Juego.EstadoJuego.PAUSADO) {
+            dibujarPausa(g);
         }
 
         for (CargaProfundidad carga : juego.getCargas()) {
@@ -108,5 +116,18 @@ public class PanelJuego extends JPanel implements ActionListener {
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, transparencia));
         g2.drawImage(imagenSubmarino, x - 18, y - 7, 36, 14, null);
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
+    }
+    
+    private void dibujarPausa(Graphics g) {
+
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Arial", Font.BOLD, 30));
+
+        String mensaje = "PAUSADO - Presiona P para continuar";
+
+        int x = (getWidth() - g.getFontMetrics().stringWidth(mensaje)) / 2;
+        int y = getHeight() / 2;
+
+        g.drawString(mensaje, x, y);
     }
 }
