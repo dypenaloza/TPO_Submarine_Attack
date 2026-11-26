@@ -16,28 +16,23 @@ public class CargaProfundidad extends ObjetoJuego implements EntidadMovil {
     private final double velocidadCaida;
     private final int profundidadExplosion;
     private boolean exploto = false;
+    private int pasosDesdeExplosion = 0;
 
-    //Constructor que llama al otro constructor (regula el rango de 
-    // profundidad explosión)
     public CargaProfundidad(double x, double y, double velocidadCaida) {
-        this(x, y, velocidadCaida,
-                PROFUNDIDAD_EXPLOSION_MIN +
-                RANDOM.nextInt(
-                		//nextInt(n) no incluye el valor n.
-                		PROFUNDIDAD_EXPLOSION_MAX - PROFUNDIDAD_EXPLOSION_MIN + 1));
-    }
-
-    private CargaProfundidad(double x, double y, double velocidadCaida, int profundidadExplosion) {
         //Como CargaProfundidad hereda de ObjetoJuego, utilizamos
      	//super para inicializar la parte heredada del objeto.
     		super(x, y);
         this.velocidadCaida = velocidadCaida;
-        this.profundidadExplosion = profundidadExplosion;
+        this.profundidadExplosion = PROFUNDIDAD_EXPLOSION_MIN +
+                RANDOM.nextInt(
+                		//nextInt(n) no incluye el valor n.
+                		PROFUNDIDAD_EXPLOSION_MAX - PROFUNDIDAD_EXPLOSION_MIN + 1);
     }
 
     @Override
     public void moverse() {
         if (exploto) {
+            pasosDesdeExplosion++;
             return;
         }
         double nuevaY = getPosicionY() + velocidadCaida;
@@ -48,8 +43,16 @@ public class CargaProfundidad extends ObjetoJuego implements EntidadMovil {
         setPosicionY(nuevaY);
     }
 
-    public boolean getExploto() {
+    public void explotar() {
+        exploto = true;
+    }
+
+    public boolean exploto() {
         return exploto;
+    }
+
+    public int getPasosDesdeExplosion() {
+        return pasosDesdeExplosion;
     }
 
     public int getProfundidadExplosion() {

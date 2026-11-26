@@ -31,11 +31,6 @@ public class Buque extends ObjetoJuego implements EntidadMovil {
         return new CargaProfundidad(getPosicionX(), getPosicionY(), velocidadCaidaCargas);
     }
 
-    public void aumentarVelocidad(double factor) {
-        velocidad *= factor;
-        velocidadCaidaCargas *= factor;
-    }
-
     public boolean salioDelCampo(double limiteHorizontal) {
         return getPosicionX() < -limiteHorizontal || getPosicionX() > limiteHorizontal;
     }

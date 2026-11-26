@@ -4,7 +4,7 @@ public class Submarino extends ObjetoJuego {
     public static final int PROFUNDIDAD_MIN = 300;
     public static final int PROFUNDIDAD_MAX = 800;
     public static final int SALUD_MAX = 100;
-    public static final double VELOCIDAD = 10;
+    public static final double VELOCIDAD = 15;
 
     private int salud = SALUD_MAX;
 

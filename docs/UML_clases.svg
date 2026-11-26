@@ -1,0 +1,194 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1860 1464" width="1860" height="1464" font-family="Helvetica, Arial, sans-serif" xml:space="preserve" style="white-space:pre">
+<defs>
+<marker id="flecha" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#111" stroke-width="1.4"/></marker>
+<marker id="triangulo" viewBox="0 0 16 16" refX="15" refY="8" markerWidth="16" markerHeight="16" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M1,1 L15,8 L1,15 Z" fill="#fff" stroke="#111" stroke-width="1.4"/></marker>
+<marker id="rombo" viewBox="0 0 20 12" refX="19" refY="6" markerWidth="20" markerHeight="12" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M1,6 L10,1 L19,6 L10,11 Z" fill="#111"/></marker>
+</defs>
+<rect width="1860" height="1464" fill="#fff"/>
+<text x="30" y="24" font-size="18" font-weight="bold">Submarine Attack — Diagrama de clases</text>
+<polyline points="740.0,900 740.0,860" fill="none" stroke="#111" stroke-width="1.4"/>
+<polyline points="1110,900 1110,860" fill="none" stroke="#111" stroke-width="1.4"/>
+<polyline points="1540,900 1540,860" fill="none" stroke="#111" stroke-width="1.4"/>
+<polyline points="740.0,860 1540,860" fill="none" stroke="#111" stroke-width="1.4"/>
+<polyline points="960.0,860 960.0,712" fill="none" stroke="#111" stroke-width="1.4" marker-end="url(#triangulo)"/>
+<polyline points="1290,900 1290,834 1670.0,834" fill="none" stroke="#111" stroke-width="1.4" stroke-dasharray="7,5"/>
+<polyline points="1670.0,900 1670.0,601.5" fill="none" stroke="#111" stroke-width="1.4" stroke-dasharray="7,5" marker-end="url(#triangulo)"/>
+<polyline points="460,960 540,960" fill="none" stroke="#111" stroke-width="1.4" marker-end="url(#flecha)"/>
+<text x="518" y="954" font-size="12.5" fill="#333">1</text>
+<polyline points="460,1253 1180,1253 1180,1228" fill="none" stroke="#111" stroke-width="1.4" marker-end="url(#flecha)"/>
+<text x="1188" y="1248" font-size="12.5" fill="#333">0..3   buquesActivos</text>
+<polyline points="460,1283 1620,1283 1620,1211" fill="none" stroke="#111" stroke-width="1.4" marker-end="url(#flecha)"/>
+<text x="1628" y="1231" font-size="12.5" fill="#333">0..*   cargas</text>
+<polyline points="430,80 520,80" fill="none" stroke="#111" stroke-width="1.4" marker-end="url(#flecha)"/>
+<text x="502" y="74" font-size="12.5" fill="#333">1</text>
+<polyline points="230,395 230,520" fill="none" stroke="#111" stroke-width="1.4" marker-end="url(#flecha)"/>
+<text x="238" y="512" font-size="12.5" fill="#333">0..1  juego</text>
+<rect x="30" y="50" width="400" height="345" fill="#fff" stroke="#111" stroke-width="1.4"/>
+<rect x="30" y="50" width="400" height="40" fill="#fde68a" stroke="#111" stroke-width="1.4"/>
+<text x="230.0" y="76" text-anchor="middle" font-weight="bold" font-size="15">ControladorJuego</text>
+<text x="38" y="107.0" font-size="12.5" font-family="Menlo, monospace">- MILISEGUNDOS_POR_PASO: int {static final}</text>
+<text x="38" y="124.0" font-size="12.5" font-family="Menlo, monospace">- vista: VentanaPrincipal</text>
+<text x="38" y="141.0" font-size="12.5" font-family="Menlo, monospace">- timer: Timer</text>
+<text x="38" y="158.0" font-size="12.5" font-family="Menlo, monospace">- juego: Juego</text>
+<text x="38" y="175.0" font-size="12.5" font-family="Menlo, monospace">- persistenciaDatos: PersistenciaDatos</text>
+<text x="38" y="192.0" font-size="12.5" font-family="Menlo, monospace">- nombreJugador: String</text>
+<text x="38" y="209.0" font-size="12.5" font-family="Menlo, monospace">- record: int</text>
+<line x1="30" y1="217" x2="430" y2="217" stroke="#111"/>
+<text x="38" y="234.0" font-size="12.5" font-family="Menlo, monospace">+ ControladorJuego(vista: VentanaPrincipal)</text>
+<text x="38" y="251.0" font-size="12.5" font-family="Menlo, monospace">+ actionPerformed(e: ActionEvent)</text>
+<text x="38" y="268.0" font-size="12.5" font-family="Menlo, monospace">+ keyPressed(e: KeyEvent)</text>
+<text x="38" y="285.0" font-size="12.5" font-family="Menlo, monospace">+ keyReleased(e: KeyEvent)</text>
+<text x="38" y="302.0" font-size="12.5" font-family="Menlo, monospace">+ keyTyped(e: KeyEvent)</text>
+<text x="38" y="319.0" font-size="12.5" font-family="Menlo, monospace">- iniciarSesion()</text>
+<text x="38" y="336.0" font-size="12.5" font-family="Menlo, monospace">- iniciarPartida()</text>
+<text x="38" y="353.0" font-size="12.5" font-family="Menlo, monospace">- paso()</text>
+<text x="38" y="370.0" font-size="12.5" font-family="Menlo, monospace">- guardarRecord()</text>
+<text x="38" y="387.0" font-size="12.5" font-family="Menlo, monospace">- actualizarVista()</text>
+<rect x="520" y="50" width="380" height="141" fill="#fff" stroke="#111" stroke-width="1.4"/>
+<rect x="520" y="50" width="380" height="40" fill="#fbcfe8" stroke="#111" stroke-width="1.4"/>
+<text x="710.0" y="76" text-anchor="middle" font-weight="bold" font-size="15">PersistenciaDatos</text>
+<text x="528" y="107.0" font-size="12.5" font-family="Menlo, monospace">- RUTA: Path {static final}</text>
+<line x1="520" y1="115" x2="900" y2="115" stroke="#111"/>
+<text x="528" y="132.0" font-size="12.5" font-family="Menlo, monospace">+ leerRecord(nombreJugador: String): int</text>
+<text x="528" y="149.0" font-size="12.5" font-family="Menlo, monospace">+ guardarRecord(nombreJugador: String,</text>
+<text x="528" y="166.0" font-size="12.5" font-family="Menlo, monospace">   record: int)</text>
+<text x="528" y="183.0" font-size="12.5" font-family="Menlo, monospace">- leerTodos(): HashMap&lt;String, Integer&gt;</text>
+<rect x="30" y="520" width="430" height="804" fill="#fff" stroke="#111" stroke-width="1.4"/>
+<rect x="30" y="520" width="430" height="40" fill="#d1fae5" stroke="#111" stroke-width="1.4"/>
+<text x="245.0" y="546" text-anchor="middle" font-weight="bold" font-size="15">Juego</text>
+<text x="38" y="577.0" font-size="12.5" font-family="Menlo, monospace">+ LIMITE_HORIZONTAL: double {static final}</text>
+<text x="38" y="594.0" font-size="12.5" font-family="Menlo, monospace">- RANDOM: Random {static final}</text>
+<text x="38" y="611.0" font-size="12.5" font-family="Menlo, monospace">- BUQUES_ACTIVOS_MAX, BUQUES_POR_SERIE,</text>
+<text x="38" y="628.0" font-size="12.5" font-family="Menlo, monospace">   VIDAS_INICIALES, NIVELES_TOTALES,</text>
+<text x="38" y="645.0" font-size="12.5" font-family="Menlo, monospace">   PUNTOS_POR_NIVEL, PUNTOS_PARA_VIDA_EXTRA,</text>
+<text x="38" y="662.0" font-size="12.5" font-family="Menlo, monospace">   PASOS_ENTRE_BUQUES, PASOS_EXPLOSION_VISIBLE:</text>
+<text x="38" y="679.0" font-size="12.5" font-family="Menlo, monospace">   int {static final}</text>
+<text x="38" y="696.0" font-size="12.5" font-family="Menlo, monospace">- AUMENTO_POR_NIVEL, DISTANCIA_CHOQUE:</text>
+<text x="38" y="713.0" font-size="12.5" font-family="Menlo, monospace">   double {static final}</text>
+<text x="38" y="730.0" font-size="12.5" font-family="Menlo, monospace">- submarino: Submarino</text>
+<text x="38" y="747.0" font-size="12.5" font-family="Menlo, monospace">- buquesActivos: List&lt;Buque&gt;</text>
+<text x="38" y="764.0" font-size="12.5" font-family="Menlo, monospace">- cargas: List&lt;CargaProfundidad&gt;</text>
+<text x="38" y="781.0" font-size="12.5" font-family="Menlo, monospace">- puntos, vidas, nivel: int</text>
+<text x="38" y="798.0" font-size="12.5" font-family="Menlo, monospace">- puntosProximaVida, pasos: int</text>
+<text x="38" y="815.0" font-size="12.5" font-family="Menlo, monospace">- gano: boolean</text>
+<text x="38" y="832.0" font-size="12.5" font-family="Menlo, monospace">- velocidadBuques, velocidadCaidaCargas: double</text>
+<text x="38" y="849.0" font-size="12.5" font-family="Menlo, monospace">- pasosEntreDisparos: int</text>
+<text x="38" y="866.0" font-size="12.5" font-family="Menlo, monospace">- contadorBuquesTotales: int</text>
+<line x1="30" y1="874" x2="460" y2="874" stroke="#111"/>
+<text x="38" y="891.0" font-size="12.5" font-family="Menlo, monospace">+ Juego()</text>
+<text x="38" y="908.0" font-size="12.5" font-family="Menlo, monospace">+ actualizarJuego()</text>
+<text x="38" y="925.0" font-size="12.5" font-family="Menlo, monospace">+ terminado(): boolean</text>
+<text x="38" y="942.0" font-size="12.5" font-family="Menlo, monospace">+ gano(): boolean</text>
+<text x="38" y="959.0" font-size="12.5" font-family="Menlo, monospace">+ subirSubmarino()</text>
+<text x="38" y="976.0" font-size="12.5" font-family="Menlo, monospace">+ bajarSubmarino()</text>
+<text x="38" y="993.0" font-size="12.5" font-family="Menlo, monospace">+ moverSubmarinoIzquierda()</text>
+<text x="38" y="1010.0" font-size="12.5" font-family="Menlo, monospace">+ moverSubmarinoDerecha()</text>
+<text x="38" y="1027.0" font-size="12.5" font-family="Menlo, monospace">+ getSubmarino(): Submarino</text>
+<text x="38" y="1044.0" font-size="12.5" font-family="Menlo, monospace">+ getBuquesActivos(): List&lt;Buque&gt;</text>
+<text x="38" y="1061.0" font-size="12.5" font-family="Menlo, monospace">+ getCargas(): List&lt;CargaProfundidad&gt;</text>
+<text x="38" y="1078.0" font-size="12.5" font-family="Menlo, monospace">+ getPuntos(): int</text>
+<text x="38" y="1095.0" font-size="12.5" font-family="Menlo, monospace">+ getVidas(): int</text>
+<text x="38" y="1112.0" font-size="12.5" font-family="Menlo, monospace">+ getNivel(): int</text>
+<text x="38" y="1129.0" font-size="12.5" font-family="Menlo, monospace">- inicializarJuego()</text>
+<text x="38" y="1146.0" font-size="12.5" font-family="Menlo, monospace">- crearBuque(): Buque</text>
+<text x="38" y="1163.0" font-size="12.5" font-family="Menlo, monospace">- agregarBuque()</text>
+<text x="38" y="1180.0" font-size="12.5" font-family="Menlo, monospace">- actualizarBuques()</text>
+<text x="38" y="1197.0" font-size="12.5" font-family="Menlo, monospace">- lanzarCargaAleatoria()</text>
+<text x="38" y="1214.0" font-size="12.5" font-family="Menlo, monospace">- actualizarCargas()</text>
+<text x="38" y="1231.0" font-size="12.5" font-family="Menlo, monospace">- aplicarExplosion(distancia: double)</text>
+<text x="38" y="1248.0" font-size="12.5" font-family="Menlo, monospace">- daniarSubmarino(porcentaje: int)</text>
+<text x="38" y="1265.0" font-size="12.5" font-family="Menlo, monospace">- perderVida()</text>
+<text x="38" y="1282.0" font-size="12.5" font-family="Menlo, monospace">- sumarPuntos(cantidad: int)</text>
+<text x="38" y="1299.0" font-size="12.5" font-family="Menlo, monospace">- serieTerminada(): boolean</text>
+<text x="38" y="1316.0" font-size="12.5" font-family="Menlo, monospace">- subirDeNivel()</text>
+<rect x="760" y="520" width="400" height="192" fill="#fff" stroke="#111" stroke-width="1.4"/>
+<rect x="760" y="520" width="400" height="40" fill="#d1fae5" stroke="#111" stroke-width="1.4"/>
+<text x="960.0" y="535" text-anchor="middle" font-size="12">«abstract»</text>
+<text x="960.0" y="552" text-anchor="middle" font-weight="bold" font-size="15" font-style="italic">ObjetoJuego</text>
+<text x="768" y="577.0" font-size="12.5" font-family="Menlo, monospace">- posicionX: double</text>
+<text x="768" y="594.0" font-size="12.5" font-family="Menlo, monospace">- posicionY: double</text>
+<line x1="760" y1="602" x2="1160" y2="602" stroke="#111"/>
+<text x="768" y="619.0" font-size="12.5" font-family="Menlo, monospace"># ObjetoJuego(x: double, y: double)</text>
+<text x="768" y="636.0" font-size="12.5" font-family="Menlo, monospace">+ getPosicionX(): double</text>
+<text x="768" y="653.0" font-size="12.5" font-family="Menlo, monospace">+ getPosicionY(): double</text>
+<text x="768" y="670.0" font-size="12.5" font-family="Menlo, monospace"># setPosicionX(posicionX: double)</text>
+<text x="768" y="687.0" font-size="12.5" font-family="Menlo, monospace"># setPosicionY(posicionY: double)</text>
+<text x="768" y="704.0" font-size="12.5" font-family="Menlo, monospace">+ distanciaA(otro: ObjetoJuego): double</text>
+<rect x="1520" y="520" width="300" height="81.5" fill="#fff" stroke="#111" stroke-width="1.4"/>
+<rect x="1520" y="520" width="300" height="40" fill="#d1fae5" stroke="#111" stroke-width="1.4"/>
+<text x="1670.0" y="535" text-anchor="middle" font-size="12">«interface»</text>
+<text x="1670.0" y="552" text-anchor="middle" font-weight="bold" font-size="15" font-style="normal">EntidadMovil</text>
+<line x1="1520" y1="576.5" x2="1820" y2="576.5" stroke="#111"/>
+<text x="1528" y="593.5" font-size="12.5" font-family="Menlo, monospace">+ moverse()</text>
+<rect x="540" y="900" width="400" height="294" fill="#fff" stroke="#111" stroke-width="1.4"/>
+<rect x="540" y="900" width="400" height="40" fill="#d1fae5" stroke="#111" stroke-width="1.4"/>
+<text x="740.0" y="926" text-anchor="middle" font-weight="bold" font-size="15">Submarino</text>
+<text x="548" y="957.0" font-size="12.5" font-family="Menlo, monospace">+ PROFUNDIDAD_MIN, PROFUNDIDAD_MAX,</text>
+<text x="548" y="974.0" font-size="12.5" font-family="Menlo, monospace">   SALUD_MAX: int {static final}</text>
+<text x="548" y="991.0" font-size="12.5" font-family="Menlo, monospace">+ VELOCIDAD: double {static final}</text>
+<text x="548" y="1008.0" font-size="12.5" font-family="Menlo, monospace">- salud: int</text>
+<line x1="540" y1="1016" x2="940" y2="1016" stroke="#111"/>
+<text x="548" y="1033.0" font-size="12.5" font-family="Menlo, monospace">+ Submarino(x: double, y: double)</text>
+<text x="548" y="1050.0" font-size="12.5" font-family="Menlo, monospace">+ subir()</text>
+<text x="548" y="1067.0" font-size="12.5" font-family="Menlo, monospace">+ bajar()</text>
+<text x="548" y="1084.0" font-size="12.5" font-family="Menlo, monospace">+ izquierda()</text>
+<text x="548" y="1101.0" font-size="12.5" font-family="Menlo, monospace">+ derecha()</text>
+<text x="548" y="1118.0" font-size="12.5" font-family="Menlo, monospace">+ recibirDanio(porcentaje: int)</text>
+<text x="548" y="1135.0" font-size="12.5" font-family="Menlo, monospace">+ estaDestruido(): boolean</text>
+<text x="548" y="1152.0" font-size="12.5" font-family="Menlo, monospace">+ restaurarSalud()</text>
+<text x="548" y="1169.0" font-size="12.5" font-family="Menlo, monospace">+ getSalud(): int</text>
+<text x="548" y="1186.0" font-size="12.5" font-family="Menlo, monospace">- acotarProfundidad(y: double): double {static}</text>
+<rect x="990" y="900" width="380" height="328" fill="#fff" stroke="#111" stroke-width="1.4"/>
+<rect x="990" y="900" width="380" height="40" fill="#d1fae5" stroke="#111" stroke-width="1.4"/>
+<text x="1180.0" y="926" text-anchor="middle" font-weight="bold" font-size="15">Buque</text>
+<text x="998" y="957.0" font-size="12.5" font-family="Menlo, monospace">+ PROFUNDIDAD: int {static final}</text>
+<text x="998" y="974.0" font-size="12.5" font-family="Menlo, monospace">- derecha: boolean</text>
+<text x="998" y="991.0" font-size="12.5" font-family="Menlo, monospace">- velocidad: double</text>
+<text x="998" y="1008.0" font-size="12.5" font-family="Menlo, monospace">- velocidadCaidaCargas: double</text>
+<text x="998" y="1025.0" font-size="12.5" font-family="Menlo, monospace">- pasadasRestantes: int</text>
+<line x1="990" y1="1033" x2="1370" y2="1033" stroke="#111"/>
+<text x="998" y="1050.0" font-size="12.5" font-family="Menlo, monospace">+ Buque(x: double, derecha: boolean,</text>
+<text x="998" y="1067.0" font-size="12.5" font-family="Menlo, monospace">   velocidad: double,</text>
+<text x="998" y="1084.0" font-size="12.5" font-family="Menlo, monospace">   velocidadCaidaCargas: double, pasadas: int)</text>
+<text x="998" y="1101.0" font-size="12.5" font-family="Menlo, monospace">+ moverse()</text>
+<text x="998" y="1118.0" font-size="12.5" font-family="Menlo, monospace">+ lanzarCarga(): CargaProfundidad</text>
+<text x="998" y="1135.0" font-size="12.5" font-family="Menlo, monospace">+ salioDelCampo(limite: double): boolean</text>
+<text x="998" y="1152.0" font-size="12.5" font-family="Menlo, monospace">+ completarPasada()</text>
+<text x="998" y="1169.0" font-size="12.5" font-family="Menlo, monospace">+ isDerecha(): boolean</text>
+<text x="998" y="1186.0" font-size="12.5" font-family="Menlo, monospace">+ getVelocidad(): double</text>
+<text x="998" y="1203.0" font-size="12.5" font-family="Menlo, monospace">+ getVelocidadCaidaCargas(): double</text>
+<text x="998" y="1220.0" font-size="12.5" font-family="Menlo, monospace">+ getPasadasRestantes(): int</text>
+<rect x="1420" y="900" width="400" height="311" fill="#fff" stroke="#111" stroke-width="1.4"/>
+<rect x="1420" y="900" width="400" height="40" fill="#d1fae5" stroke="#111" stroke-width="1.4"/>
+<text x="1620.0" y="926" text-anchor="middle" font-weight="bold" font-size="15">CargaProfundidad</text>
+<text x="1428" y="957.0" font-size="12.5" font-family="Menlo, monospace">+ PROFUNDIDAD_EXPLOSION_MIN,</text>
+<text x="1428" y="974.0" font-size="12.5" font-family="Menlo, monospace">   PROFUNDIDAD_EXPLOSION_MAX: int {static final}</text>
+<text x="1428" y="991.0" font-size="12.5" font-family="Menlo, monospace">- RANDOM: Random {static final}</text>
+<text x="1428" y="1008.0" font-size="12.5" font-family="Menlo, monospace">- velocidadCaida: double {final}</text>
+<text x="1428" y="1025.0" font-size="12.5" font-family="Menlo, monospace">- profundidadExplosion: int {final}</text>
+<text x="1428" y="1042.0" font-size="12.5" font-family="Menlo, monospace">- exploto: boolean</text>
+<text x="1428" y="1059.0" font-size="12.5" font-family="Menlo, monospace">- pasosDesdeExplosion: int</text>
+<line x1="1420" y1="1067" x2="1820" y2="1067" stroke="#111"/>
+<text x="1428" y="1084.0" font-size="12.5" font-family="Menlo, monospace">+ CargaProfundidad(x: double, y: double,</text>
+<text x="1428" y="1101.0" font-size="12.5" font-family="Menlo, monospace">   velocidadCaida: double)</text>
+<text x="1428" y="1118.0" font-size="12.5" font-family="Menlo, monospace">+ moverse()</text>
+<text x="1428" y="1135.0" font-size="12.5" font-family="Menlo, monospace">+ explotar()</text>
+<text x="1428" y="1152.0" font-size="12.5" font-family="Menlo, monospace">+ exploto(): boolean</text>
+<text x="1428" y="1169.0" font-size="12.5" font-family="Menlo, monospace">+ getPasosDesdeExplosion(): int</text>
+<text x="1428" y="1186.0" font-size="12.5" font-family="Menlo, monospace">+ getProfundidadExplosion(): int</text>
+<text x="1428" y="1203.0" font-size="12.5" font-family="Menlo, monospace">+ getVelocidadCaida(): double</text>
+<text x="30" y="1369" font-weight="bold" font-size="14">Referencias</text>
+<rect x="30" y="1381" width="18" height="14" fill="#fde68a" stroke="#111"/>
+<text x="54" y="1393" font-size="13">paquete controlador</text>
+<rect x="220" y="1381" width="18" height="14" fill="#d1fae5" stroke="#111"/>
+<text x="244" y="1393" font-size="13">paquete modelo</text>
+<rect x="410" y="1381" width="18" height="14" fill="#fbcfe8" stroke="#111"/>
+<text x="434" y="1393" font-size="13">paquete persistencia</text>
+<polyline points="30,1424 90,1424" fill="none" stroke="#111" stroke-width="1.4" marker-end="url(#triangulo)"/>
+<text x="100" y="1429" font-size="13">herencia (extends)</text>
+<polyline points="290,1424 350,1424" fill="none" stroke="#111" stroke-width="1.4" stroke-dasharray="7,5" marker-end="url(#triangulo)"/>
+<text x="360" y="1429" font-size="13">implementa interfaz</text>
+<polyline points="550,1424 610,1424" fill="none" stroke="#111" stroke-width="1.4" marker-end="url(#flecha)"/>
+<text x="620" y="1429" font-size="13">asociación (atributo)</text>
+<text x="830" y="1429" font-size="13" font-family="Menlo, monospace">+ público   - privado   # protegido</text>
+</svg>

@@ -5,134 +5,262 @@ import java.util.List;
 import java.util.Random;
 
 public class Juego {
+	public static final double LIMITE_HORIZONTAL = 750;
+
 	private static final Random RANDOM = new Random();
+	private static final int BUQUES_ACTIVOS_MAX = 3;
+	private static final int BUQUES_POR_SERIE = 12;
+	private static final int VIDAS_INICIALES = 3;
+	private static final int NIVELES_TOTALES = 3;
+	private static final int PUNTOS_POR_NIVEL = 200;
+	private static final int PUNTOS_PARA_VIDA_EXTRA = 500;
+	private static final double AUMENTO_POR_NIVEL = 1.2;
+	private static final int PASOS_ENTRE_BUQUES = 120;
+	private static final double DISTANCIA_CHOQUE = 30;
+	private static final int PASOS_EXPLOSION_VISIBLE = 20;
+
 	private Submarino submarino;
 	private int puntos = 0;
-	private static final int BUQUES_ACTIVOS_MAX = 3;
-	private final double LIMITE_HORIZONTAL;
-	
-	private double velocidadBuques = 5;
-	private double velocidadCaidaCargas = 5;
+	private int vidas = VIDAS_INICIALES;
+	private int nivel = 1;
+	private boolean gano = false;
+	private int puntosProximaVida = PUNTOS_PARA_VIDA_EXTRA;
+	private int pasos = 0;
+
+	private double velocidadBuques = 2.3;
+	private double velocidadCaidaCargas = 1.5;
+	private int pasosEntreDisparos = 80;
 
 	private List<Buque> buquesActivos = new ArrayList<Buque>();
 	private int contadorBuquesTotales = 0;
 
 	private List<CargaProfundidad> cargas = new ArrayList<CargaProfundidad>();
-	
-	public Juego(double anchoCampo) {
-		LIMITE_HORIZONTAL = anchoCampo;
+
+	public Juego() {
 		inicializarJuego();
 	}
-	
+
 	private void inicializarJuego() {
 		submarino = new Submarino(0, 500);
-		agregarBuques();
+		agregarBuque();
 	}
-	
+
+	public void actualizarJuego() {
+		if (terminado()) {
+			return;
+		}
+		pasos++;
+
+		if (pasos % PASOS_ENTRE_BUQUES == 0) {
+			agregarBuque();
+		}
+		if (pasos % pasosEntreDisparos == 0) {
+			lanzarCargaAleatoria();
+		}
+
+		actualizarBuques();
+		actualizarCargas();
+
+		if (serieTerminada()) {
+			subirDeNivel();
+		}
+	}
+
 	private Buque crearBuque() {
 		boolean apareceIzquierda = RANDOM.nextBoolean();
 		Buque buque;
-		int pasadas = RANDOM.nextInt(1,4);
-		
+		int pasadas = RANDOM.nextInt(1, 4);
+
 		if (apareceIzquierda)
 		{
-			buque = new Buque(-LIMITE_HORIZONTAL, true, velocidadBuques, velocidadCaidaCargas, pasadas );
+			buque = new Buque(-LIMITE_HORIZONTAL, true, velocidadBuques, velocidadCaidaCargas, pasadas);
 		}
 		else
 		{
-			buque = new Buque(LIMITE_HORIZONTAL, false, velocidadBuques, velocidadCaidaCargas, pasadas );
+			buque = new Buque(LIMITE_HORIZONTAL, false, velocidadBuques, velocidadCaidaCargas, pasadas);
 		}
 		return buque;
 	}
-	
-	private void agregarBuques() {
 
-		while(buquesActivos.size() < BUQUES_ACTIVOS_MAX && contadorBuquesTotales < 12)
+	private void agregarBuque() {
+		if (buquesActivos.size() < BUQUES_ACTIVOS_MAX && contadorBuquesTotales < BUQUES_POR_SERIE)
 		{
-			Buque nuevoBuque = crearBuque();
-			buquesActivos.add(nuevoBuque);
+			buquesActivos.add(crearBuque());
 			contadorBuquesTotales++;
 		}
-			
 	}
-	
+
 	private void actualizarBuques() {
-		int cantBuquesActivos = buquesActivos.size();
-		for (int i = cantBuquesActivos - 1; i >= 0; i--)
+		for (int i = buquesActivos.size() - 1; i >= 0; i--)
 		{
 			Buque buqueActual = buquesActivos.get(i);
 			buqueActual.moverse();
-			
+
 			if (buqueActual.salioDelCampo(LIMITE_HORIZONTAL))
 			{
 				buqueActual.completarPasada();
 			}
-			
+
 			if (buqueActual.getPasadasRestantes() == 0)
 			{
 				buquesActivos.remove(i);
-				
 			}
-			
 		}
-		
-		agregarBuques();
 	}
-	
-	
-	public void lanzarCargaAleatoria() {
+
+	private void lanzarCargaAleatoria() {
 		if (buquesActivos.isEmpty())
 		{
 			return;
 		}
-		
+
 		int indice = RANDOM.nextInt(buquesActivos.size());
 		Buque buque = buquesActivos.get(indice);
-		CargaProfundidad nuevaCarga = buque.lanzarCarga();
-		cargas.add(nuevaCarga);
-
+		cargas.add(buque.lanzarCarga());
 	}
-	
+
 	private void actualizarCargas() {
-		int cantCargas = cargas.size();
-		for (int i = cantCargas - 1; i >= 0; i--)
+		for (int i = cargas.size() - 1; i >= 0; i--)
 		{
 			CargaProfundidad cargaActual = cargas.get(i);
-			cargaActual.moverse();
-			
-			if (cargaActual.getExploto() )
+
+			if (cargaActual.exploto())
 			{
+				cargaActual.moverse();
+				if (cargaActual.getPasosDesdeExplosion() > PASOS_EXPLOSION_VISIBLE)
+				{
+					cargas.remove(i);
+				}
+			}
+			else
+			{
+				cargaActual.moverse();
 				double distancia = cargaActual.distanciaA(submarino);
-				
-				if (distancia < 10)
+
+				if (distancia < DISTANCIA_CHOQUE)
 				{
-					//
+					cargaActual.explotar();
+					perderVida();
 				}
-				else if (distancia >= 10 && distancia <50)
+				else if (cargaActual.exploto())
 				{
-					submarino.recibirDanio(50);
+					aplicarExplosion(distancia);
 				}
-				else if (distancia >= 50 && distancia <= 100)
-				{
-					submarino.recibirDanio(30);
-					puntos = puntos + 10;
-				}
-				else
-				{
-					puntos = puntos + 30;
-				}
-				
-				cargas.remove(i);
-				
 			}
 		}
 	}
-	
-	public void actualizarJuego() {
-	    actualizarBuques();
-	    actualizarCargas();
+
+	private void aplicarExplosion(double distancia) {
+		if (distancia < 10)
+		{
+			perderVida();
+		}
+		else if (distancia < 50)
+		{
+			daniarSubmarino(50);
+		}
+		else if (distancia <= 100)
+		{
+			daniarSubmarino(30);
+			sumarPuntos(10);
+		}
+		else
+		{
+			sumarPuntos(30);
+		}
 	}
 
+	private void daniarSubmarino(int porcentaje) {
+		submarino.recibirDanio(porcentaje);
+		if (submarino.estaDestruido())
+		{
+			perderVida();
+		}
+	}
+
+	private void perderVida() {
+		vidas--;
+		submarino.restaurarSalud();
+	}
+
+	private void sumarPuntos(int cantidad) {
+		puntos = puntos + cantidad;
+		if (puntos >= puntosProximaVida)
+		{
+			vidas++;
+			puntosProximaVida = puntosProximaVida + PUNTOS_PARA_VIDA_EXTRA;
+		}
+	}
+
+	private boolean serieTerminada() {
+		return contadorBuquesTotales == BUQUES_POR_SERIE && buquesActivos.isEmpty() && cargas.isEmpty();
+	}
+
+	private void subirDeNivel() {
+		sumarPuntos(PUNTOS_POR_NIVEL);
+		if (nivel == NIVELES_TOTALES)
+		{
+			gano = true;
+			return;
+		}
+		nivel++;
+		velocidadBuques = velocidadBuques * AUMENTO_POR_NIVEL;
+		velocidadCaidaCargas = velocidadCaidaCargas * AUMENTO_POR_NIVEL;
+		pasosEntreDisparos = (int) (pasosEntreDisparos / AUMENTO_POR_NIVEL);
+		contadorBuquesTotales = 0;
+	}
+
+	public boolean terminado() {
+		return vidas <= 0 || gano;
+	}
+
+	public boolean gano() {
+		return gano;
+	}
+
+	public void subirSubmarino() {
+		submarino.subir();
+	}
+
+	public void bajarSubmarino() {
+		submarino.bajar();
+	}
+
+	public void moverSubmarinoIzquierda() {
+		if (submarino.getPosicionX() - Submarino.VELOCIDAD >= -LIMITE_HORIZONTAL)
+		{
+			submarino.izquierda();
+		}
+	}
+
+	public void moverSubmarinoDerecha() {
+		if (submarino.getPosicionX() + Submarino.VELOCIDAD <= LIMITE_HORIZONTAL)
+		{
+			submarino.derecha();
+		}
+	}
+
+	public Submarino getSubmarino() {
+		return submarino;
+	}
+
+	public List<Buque> getBuquesActivos() {
+		return buquesActivos;
+	}
+
+	public List<CargaProfundidad> getCargas() {
+		return cargas;
+	}
+
+	public int getPuntos() {
+		return puntos;
+	}
+
+	public int getVidas() {
+		return vidas;
+	}
+
+	public int getNivel() {
+		return nivel;
+	}
 }
-
-
