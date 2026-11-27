@@ -44,23 +44,23 @@ Submarino, Buque y CargaProfundidad heredan de la clase abstracta ObjetoJuego, q
 
 Las relaciones con flecha llena son asociaciones, la flecha con triángulo es herencia y la punteada con triángulo es implementar una interfaz.
 
-## 5. Juego: las reglas en cada paso — Karo
+## 5. El paso a paso — Karo
 
-Juego es la clase que aplica las reglas. Cada 16 milisegundos el controlador llama a actualizarJuego, que hace estos cinco pasos en orden: si hay lugar agrega un buque, cada cierta cantidad de pasos un buque al azar tira una carga, mueve los buques, mueve las cargas y resuelve las explosiones, y si terminó la serie sube de nivel o, si era el nivel 3, ganamos.
+Juego es la clase que aplica las reglas. En cada paso del timer, el controlador llama a actualizarJuego, que hace esto en orden: primero, si el juego no está en estado JUGANDO, no hace nada; así funciona la pausa. Si está jugando, cuenta un paso más. Cada cierta cantidad de pasos aparece un buque nuevo, si hay menos de 3, y un buque al azar tira una carga. Después mueve los buques, y los que terminaron sus pasadas se retiran. Mueve las cargas y resuelve choques y explosiones, con su daño y sus puntos; si nos quedamos sin vidas, el juego termina. Y por último, si terminó la serie, sube de nivel o, si era el nivel 3, ganamos.
 
 Además el juego funciona como una máquina de estados. El estado es un enum con cinco valores: INICIO, JUGANDO, PAUSADO, GAME_OVER y VICTORIA. El método cambiarEstado solo permite los cambios válidos: de inicio a jugando, de jugando a pausado y vuelta con la tecla P, y de jugando a game over o victoria. actualizarJuego solo avanza si el estado es JUGANDO, así en pausa todo queda quieto.
 
 Usamos un enum porque limita los valores a una lista fija: no se puede asignar un estado que no existe.
 
-## 6. ControladorJuego: recibe eventos y coordina — Karo
+## 6. ControladorJuego — Karo
 
-El controlador implementa ActionListener y KeyListener: se registra como oyente del temporizador, de los botones y del teclado. Esas son sus entradas, a la izquierda.
+El controlador implementa ActionListener y KeyListener: se registra como oyente del temporizador, de los botones y del teclado. Esos eventos le llegan por los métodos de la izquierda: actionPerformed y keyPressed. keyReleased y keyTyped están vacíos porque la interfaz obliga a tenerlos.
 
 El Timer de Swing dispara un evento cada 16 milisegundos, unas 60 veces por segundo. En cada uno, el método paso le pide al juego que avance y actualiza la pantalla. Los botones llevan de una pantalla a otra, y el teclado mueve el submarino o pausa con la P.
 
-A la derecha están sus salidas. Además de avanzar el juego y actualizar el HUD, el controlador detecta dos eventos: guarda la salud, las vidas y el nivel de antes del paso y los compara con los de después. Si bajó la salud, actualiza la barra de vida y activa el efecto de fading; así el indicador de vida se refresca por evento, como pide el enunciado. Y si cambió el nivel, guarda el récord automáticamente.
+A la derecha están los métodos que coordinan: iniciarSesion carga el récord del jugador, iniciarPartida crea el juego y arranca el timer, y paso es el corazón: avanza el juego y actualiza la pantalla. Además, en paso el controlador detecta dos eventos: guarda la salud, las vidas y el nivel de antes del paso y los compara con los de después. Si bajó la salud, actualiza la barra de vida y activa el efecto de fading; así el indicador de vida se refresca por evento, como pide el enunciado. Y si cambió el nivel, guarda el récord automáticamente.
 
-## 7. La vista: pantallas y dibujo — Karo
+## 7. La vista — Karo
 
 La vista la armamos con el diseñador de formularios de IntelliJ. VentanaPrincipal tiene un CardLayout, que apila las pantallas como cartas y muestra una a la vez: inicio de sesión, menú, juego, instrucciones y fin del juego. El menú tiene una imagen de fondo que dibuja PanelMenu.
 
@@ -72,7 +72,7 @@ Elegimos dibujar en vez de una grilla de labels porque las posiciones del modelo
 
 El fading usa otro Timer, de 50 milisegundos, que va cambiando la transparencia del submarino.
 
-## 8. Persistencia: el récord de cada jugador — Karo
+## 8. Persistencia — Karo
 
 Al empezar, el juego pide el nombre del jugador. El récord de cada jugador se guarda en el archivo records.txt, una línea por jugador con el formato nombre punto y coma récord.
 
