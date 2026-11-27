@@ -42,7 +42,6 @@ public class VentanaPrincipal {
     private PanelJuego panelJuego;
 
     public VentanaPrincipal() {
-        vidasLabel.setIcon(new ImageIcon(getClass().getResource("/imagenes/vida.png")));
         txtInstrucciones.setText("<html><div style='text-align:center'>"
                 + "<h2>Instrucciones</h2>"
                 + "Mové el submarino con las flechas del teclado.<br>"
@@ -202,7 +201,8 @@ public class VentanaPrincipal {
         hud.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 4, new Insets(0, 0, 0, 0), -1, -1));
         juego.add(hud, BorderLayout.NORTH);
         vidasLabel = new JLabel();
-        vidasLabel.setText("Vidas: 3");
+        vidasLabel.setIcon(new ImageIcon(getClass().getResource("/imagenes/vida.png")));
+        vidasLabel.setText("x 3");
         hud.add(vidasLabel, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         saludBarra = new JProgressBar();
         saludBarra.setStringPainted(true);
