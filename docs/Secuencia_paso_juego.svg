@@ -1,0 +1,172 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1770 2060" width="1770" height="2060" font-family="Helvetica, Arial, sans-serif">
+<defs>
+<marker id="llena" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto" markerUnits="userSpaceOnUse"><path d="M1,1 L11,6 L1,11 Z" fill="#111"/></marker>
+<marker id="abierta" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto" markerUnits="userSpaceOnUse"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#111" stroke-width="1.3"/></marker>
+</defs>
+<rect width="1770" height="2060" fill="#fff"/>
+<text x="20" y="30" font-size="18" font-weight="bold">Submarine Attack — Diagrama de secuencia: un paso del juego</text>
+<text x="20" y="52" font-size="13" fill="#444">El Timer dispara este paso cada 16 ms mientras dura la partida.</text>
+<rect x="405" y="276" width="760" height="1256" fill="none" stroke="#555" stroke-width="1.1"/>
+<rect x="419" y="328" width="162" height="98" fill="none" stroke="#555" stroke-width="1.1"/>
+<rect x="419" y="446" width="352" height="170" fill="none" stroke="#555" stroke-width="1.1"/>
+<rect x="419" y="636" width="352" height="264" fill="none" stroke="#555" stroke-width="1.1"/>
+<rect x="433" y="796" width="324" height="86" fill="none" stroke="#555" stroke-width="1.1"/>
+<rect x="419" y="920" width="732" height="476" fill="none" stroke="#555" stroke-width="1.1"/>
+<rect x="433" y="1080" width="704" height="298" fill="none" stroke="#555" stroke-width="1.1"/>
+<line x1="433" y1="1246" x2="1137" y2="1246" stroke="#555" stroke-dasharray="6,4"/>
+<rect x="419" y="1416" width="162" height="98" fill="none" stroke="#555" stroke-width="1.1"/>
+<rect x="215" y="1588" width="1330" height="122" fill="none" stroke="#555" stroke-width="1.1"/>
+<rect x="215" y="1730" width="1520" height="134" fill="none" stroke="#555" stroke-width="1.1"/>
+<rect x="25" y="1884" width="1330" height="122" fill="none" stroke="#555" stroke-width="1.1"/>
+<line x1="120" y1="110" x2="120" y2="2040" stroke="#888" stroke-dasharray="5,5"/>
+<rect x="38" y="70" width="164" height="40" fill="#f3f4f6" stroke="#111" stroke-width="1.3"/>
+<text x="120" y="95" text-anchor="middle" font-size="14" font-weight="bold">:Timer</text>
+<line x1="310" y1="110" x2="310" y2="2040" stroke="#888" stroke-dasharray="5,5"/>
+<rect x="228" y="70" width="164" height="40" fill="#fde68a" stroke="#111" stroke-width="1.3"/>
+<text x="310" y="95" text-anchor="middle" font-size="14" font-weight="bold">:ControladorJuego</text>
+<line x1="500" y1="110" x2="500" y2="2040" stroke="#888" stroke-dasharray="5,5"/>
+<rect x="418" y="70" width="164" height="40" fill="#d1fae5" stroke="#111" stroke-width="1.3"/>
+<text x="500" y="95" text-anchor="middle" font-size="14" font-weight="bold">:Juego</text>
+<line x1="690" y1="110" x2="690" y2="2040" stroke="#888" stroke-dasharray="5,5"/>
+<rect x="608" y="70" width="164" height="40" fill="#d1fae5" stroke="#111" stroke-width="1.3"/>
+<text x="690" y="95" text-anchor="middle" font-size="14" font-weight="bold">:Buque</text>
+<line x1="880" y1="110" x2="880" y2="2040" stroke="#888" stroke-dasharray="5,5"/>
+<rect x="798" y="70" width="164" height="40" fill="#d1fae5" stroke="#111" stroke-width="1.3"/>
+<text x="880" y="95" text-anchor="middle" font-size="14" font-weight="bold">:CargaProfundidad</text>
+<line x1="1070" y1="110" x2="1070" y2="2040" stroke="#888" stroke-dasharray="5,5"/>
+<rect x="988" y="70" width="164" height="40" fill="#d1fae5" stroke="#111" stroke-width="1.3"/>
+<text x="1070" y="95" text-anchor="middle" font-size="14" font-weight="bold">:Submarino</text>
+<line x1="1260" y1="110" x2="1260" y2="2040" stroke="#888" stroke-dasharray="5,5"/>
+<rect x="1178" y="70" width="164" height="40" fill="#dbeafe" stroke="#111" stroke-width="1.3"/>
+<text x="1260" y="95" text-anchor="middle" font-size="14" font-weight="bold">:VentanaPrincipal</text>
+<line x1="1450" y1="110" x2="1450" y2="2040" stroke="#888" stroke-dasharray="5,5"/>
+<rect x="1368" y="70" width="164" height="40" fill="#dbeafe" stroke="#111" stroke-width="1.3"/>
+<text x="1450" y="95" text-anchor="middle" font-size="14" font-weight="bold">:PanelJuego</text>
+<line x1="1640" y1="110" x2="1640" y2="2040" stroke="#888" stroke-dasharray="5,5"/>
+<rect x="1558" y="70" width="164" height="40" fill="#fbcfe8" stroke="#111" stroke-width="1.3"/>
+<text x="1640" y="95" text-anchor="middle" font-size="14" font-weight="bold">:PersistenciaDatos</text>
+<rect x="310" y="198" width="12" height="24" fill="#fff" stroke="#111" stroke-width="1.2"/>
+<rect x="500" y="386" width="12" height="24" fill="#fff" stroke="#111" stroke-width="1.2"/>
+<rect x="500" y="504" width="12" height="24" fill="#fff" stroke="#111" stroke-width="1.2"/>
+<rect x="684" y="532" width="12" height="48" fill="#fff" stroke="#111" stroke-width="1.2"/>
+<rect x="684" y="674" width="12" height="26" fill="#fff" stroke="#111" stroke-width="1.2"/>
+<rect x="684" y="710" width="12" height="48" fill="#fff" stroke="#111" stroke-width="1.2"/>
+<rect x="684" y="834" width="12" height="26" fill="#fff" stroke="#111" stroke-width="1.2"/>
+<rect x="874" y="958" width="12" height="26" fill="#fff" stroke="#111" stroke-width="1.2"/>
+<rect x="874" y="994" width="12" height="48" fill="#fff" stroke="#111" stroke-width="1.2"/>
+<rect x="874" y="1118" width="12" height="26" fill="#fff" stroke="#111" stroke-width="1.2"/>
+<rect x="500" y="1174" width="12" height="24" fill="#fff" stroke="#111" stroke-width="1.2"/>
+<rect x="1064" y="1202" width="12" height="26" fill="#fff" stroke="#111" stroke-width="1.2"/>
+<rect x="500" y="1302" width="12" height="24" fill="#fff" stroke="#111" stroke-width="1.2"/>
+<rect x="1064" y="1330" width="12" height="26" fill="#fff" stroke="#111" stroke-width="1.2"/>
+<rect x="500" y="1474" width="12" height="24" fill="#fff" stroke="#111" stroke-width="1.2"/>
+<rect x="494" y="226" width="12" height="1320" fill="#fff" stroke="#111" stroke-width="1.2"/>
+<rect x="1254" y="1538" width="12" height="26" fill="#fff" stroke="#111" stroke-width="1.2"/>
+<rect x="1254" y="1626" width="12" height="26" fill="#fff" stroke="#111" stroke-width="1.2"/>
+<rect x="1444" y="1662" width="12" height="26" fill="#fff" stroke="#111" stroke-width="1.2"/>
+<rect x="310" y="1788" width="12" height="24" fill="#fff" stroke="#111" stroke-width="1.2"/>
+<rect x="1634" y="1816" width="12" height="26" fill="#fff" stroke="#111" stroke-width="1.2"/>
+<rect x="114" y="1922" width="12" height="26" fill="#fff" stroke="#111" stroke-width="1.2"/>
+<rect x="1254" y="1958" width="12" height="26" fill="#fff" stroke="#111" stroke-width="1.2"/>
+<rect x="304" y="142" width="12" height="1878" fill="#fff" stroke="#111" stroke-width="1.2"/>
+<line x1="126" y1="150" x2="304" y2="150" stroke="#111" stroke-width="1.3" marker-end="url(#llena)"/>
+<text x="136" y="144" font-size="12.5">actionPerformed(e)  (cada 16 ms)</text>
+<polyline points="316,186 350,186 350,208 335,208" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#llena)"/>
+<text x="358" y="201" font-size="12.5">paso()</text>
+<line x1="316" y1="234" x2="494" y2="234" stroke="#111" stroke-width="1.3" marker-end="url(#llena)"/>
+<text x="326" y="228" font-size="12.5">actualizarJuego()</text>
+<polyline points="506,374 540,374 540,396 525,396" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#llena)"/>
+<text x="548" y="389" font-size="12.5">agregarBuque()  (si hay menos de 3)</text>
+<polyline points="506,492 540,492 540,514 525,514" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#llena)"/>
+<text x="548" y="507" font-size="12.5">lanzarCargaAleatoria()</text>
+<line x1="506" y1="540" x2="684" y2="540" stroke="#111" stroke-width="1.3" marker-end="url(#llena)"/>
+<text x="516" y="534" font-size="12.5">lanzarCarga()</text>
+<line x1="684" y1="576" x2="506" y2="576" stroke="#111" stroke-width="1.3" stroke-dasharray="7,5" marker-end="url(#abierta)"/>
+<text x="516" y="570" font-size="12.5">nueva CargaProfundidad</text>
+<line x1="506" y1="682" x2="684" y2="682" stroke="#111" stroke-width="1.3" marker-end="url(#llena)"/>
+<text x="516" y="676" font-size="12.5">moverse()</text>
+<line x1="506" y1="718" x2="684" y2="718" stroke="#111" stroke-width="1.3" marker-end="url(#llena)"/>
+<text x="516" y="712" font-size="12.5">salioDelCampo(LIMITE_HORIZONTAL)</text>
+<line x1="684" y1="754" x2="506" y2="754" stroke="#111" stroke-width="1.3" stroke-dasharray="7,5" marker-end="url(#abierta)"/>
+<text x="516" y="748" font-size="12.5">true / false</text>
+<line x1="506" y1="842" x2="684" y2="842" stroke="#111" stroke-width="1.3" marker-end="url(#llena)"/>
+<text x="516" y="836" font-size="12.5">completarPasada()</text>
+<line x1="506" y1="966" x2="874" y2="966" stroke="#111" stroke-width="1.3" marker-end="url(#llena)"/>
+<text x="516" y="960" font-size="12.5">moverse()</text>
+<line x1="506" y1="1002" x2="874" y2="1002" stroke="#111" stroke-width="1.3" marker-end="url(#llena)"/>
+<text x="516" y="996" font-size="12.5">distanciaA(submarino)</text>
+<line x1="874" y1="1038" x2="506" y2="1038" stroke="#111" stroke-width="1.3" stroke-dasharray="7,5" marker-end="url(#abierta)"/>
+<text x="516" y="1032" font-size="12.5">distancia</text>
+<line x1="506" y1="1126" x2="874" y2="1126" stroke="#111" stroke-width="1.3" marker-end="url(#llena)"/>
+<text x="516" y="1120" font-size="12.5">explotar()</text>
+<polyline points="506,1162 540,1162 540,1184 525,1184" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#llena)"/>
+<text x="548" y="1177" font-size="12.5">perderVida()</text>
+<line x1="506" y1="1210" x2="1064" y2="1210" stroke="#111" stroke-width="1.3" marker-end="url(#llena)"/>
+<text x="516" y="1204" font-size="12.5">restaurarSalud()</text>
+<polyline points="506,1290 540,1290 540,1312 525,1312" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#llena)"/>
+<text x="548" y="1305" font-size="12.5">aplicarExplosion(distancia)</text>
+<line x1="506" y1="1338" x2="1064" y2="1338" stroke="#111" stroke-width="1.3" marker-end="url(#llena)"/>
+<text x="516" y="1332" font-size="12.5">recibirDanio(30 o 50, según la distancia)</text>
+<polyline points="506,1462 540,1462 540,1484 525,1484" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#llena)"/>
+<text x="548" y="1477" font-size="12.5">subirDeNivel()  (+200 puntos, +20%)</text>
+<line x1="316" y1="1546" x2="1254" y2="1546" stroke="#111" stroke-width="1.3" marker-end="url(#llena)"/>
+<text x="326" y="1540" font-size="12.5">actualizarHud(vidas, puntos, nivel)</text>
+<line x1="316" y1="1634" x2="1254" y2="1634" stroke="#111" stroke-width="1.3" marker-end="url(#llena)"/>
+<text x="326" y="1628" font-size="12.5">actualizarSalud(salud)</text>
+<line x1="316" y1="1670" x2="1444" y2="1670" stroke="#111" stroke-width="1.3" marker-end="url(#llena)"/>
+<text x="326" y="1664" font-size="12.5">iniciarFading()</text>
+<polyline points="316,1776 350,1776 350,1798 335,1798" fill="none" stroke="#111" stroke-width="1.3" marker-end="url(#llena)"/>
+<text x="358" y="1791" font-size="12.5">guardarRecord()</text>
+<line x1="316" y1="1824" x2="1634" y2="1824" stroke="#111" stroke-width="1.3" marker-end="url(#llena)"/>
+<text x="326" y="1818" font-size="12.5">guardarRecord(nombreJugador, record)</text>
+<line x1="304" y1="1930" x2="126" y2="1930" stroke="#111" stroke-width="1.3" marker-end="url(#llena)"/>
+<text x="136" y="1924" font-size="12.5">stop()</text>
+<line x1="316" y1="1966" x2="1254" y2="1966" stroke="#111" stroke-width="1.3" marker-end="url(#llena)"/>
+<text x="326" y="1960" font-size="12.5">mostrarFinDelJuego(gano, puntos, nombre, record)</text>
+<path d="M405,276 h38 v12 l-8,8 h-30 z" fill="#eef1f5" stroke="#555" stroke-width="1.1"/>
+<text x="411" y="291" font-size="12" font-weight="bold">opt</text>
+<rect x="447" y="279" width="135.39999999999998" height="17" fill="#fff"/>
+<text x="451" y="291" font-size="12" fill="#333">[estado == JUGANDO]</text>
+<path d="M419,328 h38 v12 l-8,8 h-30 z" fill="#eef1f5" stroke="#555" stroke-width="1.1"/>
+<text x="425" y="343" font-size="12" font-weight="bold">opt</text>
+<rect x="461" y="331" width="227.79999999999998" height="17" fill="#fff"/>
+<text x="465" y="343" font-size="12" fill="#333">[pasos % PASOS_ENTRE_BUQUES == 0]</text>
+<path d="M419,446 h38 v12 l-8,8 h-30 z" fill="#eef1f5" stroke="#555" stroke-width="1.1"/>
+<text x="425" y="461" font-size="12" font-weight="bold">opt</text>
+<rect x="461" y="449" width="227.79999999999998" height="17" fill="#fff"/>
+<text x="465" y="461" font-size="12" fill="#333">[pasos % pasosEntreDisparos == 0]</text>
+<path d="M419,636 h46 v12 l-8,8 h-38 z" fill="#eef1f5" stroke="#555" stroke-width="1.1"/>
+<text x="425" y="651" font-size="12" font-weight="bold">loop</text>
+<rect x="469" y="639" width="168.39999999999998" height="17" fill="#fff"/>
+<text x="473" y="651" font-size="12" fill="#333">[para cada buque activo]</text>
+<path d="M433,796 h38 v12 l-8,8 h-30 z" fill="#eef1f5" stroke="#555" stroke-width="1.1"/>
+<text x="439" y="811" font-size="12" font-weight="bold">opt</text>
+<rect x="475" y="799" width="122.19999999999999" height="17" fill="#fff"/>
+<text x="479" y="811" font-size="12" fill="#333">[salió del campo]</text>
+<path d="M419,920 h46 v12 l-8,8 h-38 z" fill="#eef1f5" stroke="#555" stroke-width="1.1"/>
+<text x="425" y="935" font-size="12" font-weight="bold">loop</text>
+<rect x="469" y="923" width="122.19999999999999" height="17" fill="#fff"/>
+<text x="473" y="935" font-size="12" fill="#333">[para cada carga]</text>
+<path d="M433,1080 h38 v12 l-8,8 h-30 z" fill="#eef1f5" stroke="#555" stroke-width="1.1"/>
+<text x="439" y="1095" font-size="12" font-weight="bold">alt</text>
+<rect x="475" y="1083" width="300.4" height="17" fill="#fff"/>
+<text x="479" y="1095" font-size="12" fill="#333">[distancia &lt; DISTANCIA_CHOQUE]  (la tocamos)</text>
+<rect x="437" y="1250" width="254.2" height="17" fill="#fff"/>
+<text x="441" y="1262" font-size="12" fill="#333">[exploto()]  (llegó a su profundidad)</text>
+<path d="M419,1416 h38 v12 l-8,8 h-30 z" fill="#eef1f5" stroke="#555" stroke-width="1.1"/>
+<text x="425" y="1431" font-size="12" font-weight="bold">opt</text>
+<rect x="461" y="1419" width="128.8" height="17" fill="#fff"/>
+<text x="465" y="1431" font-size="12" fill="#333">[serieTerminada()]</text>
+<path d="M215,1588 h38 v12 l-8,8 h-30 z" fill="#eef1f5" stroke="#555" stroke-width="1.1"/>
+<text x="221" y="1603" font-size="12" font-weight="bold">opt</text>
+<rect x="257" y="1591" width="307.0" height="17" fill="#fff"/>
+<text x="261" y="1603" font-size="12" fill="#333">[bajó la salud o las vidas]  (evento de daño)</text>
+<path d="M215,1730 h38 v12 l-8,8 h-30 z" fill="#eef1f5" stroke="#555" stroke-width="1.1"/>
+<text x="221" y="1745" font-size="12" font-weight="bold">opt</text>
+<rect x="257" y="1733" width="300.4" height="17" fill="#fff"/>
+<text x="261" y="1745" font-size="12" fill="#333">[cambió el nivel]  (evento de paso de nivel)</text>
+<path d="M25,1884 h38 v12 l-8,8 h-30 z" fill="#eef1f5" stroke="#555" stroke-width="1.1"/>
+<text x="31" y="1899" font-size="12" font-weight="bold">opt</text>
+<rect x="67" y="1887" width="135.39999999999998" height="17" fill="#fff"/>
+<text x="71" y="1899" font-size="12" fill="#333">[juego.terminado()]</text>
+</svg>

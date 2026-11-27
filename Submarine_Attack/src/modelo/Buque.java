@@ -39,25 +39,17 @@ public class Buque extends ObjetoJuego implements EntidadMovil {
         return derecha;
     }
 
-    public double getVelocidad() {
-        return velocidad;
-    }
-
-    public double getVelocidadCaidaCargas() {
-        return velocidadCaidaCargas;
-    }
-    
     public int getPasadasRestantes() {
     	return pasadasRestantes;
     }
-    
+
     public void completarPasada() {
     	if (pasadasRestantes > 0) {
     		pasadasRestantes--;
     	}
     	if (pasadasRestantes > 0) {
     		derecha = !derecha;
-    	}	
+    	}
     }
 }
 

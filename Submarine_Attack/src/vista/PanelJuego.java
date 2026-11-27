@@ -93,10 +93,6 @@ public class PanelJuego extends JPanel implements ActionListener {
                 g.drawImage(imagenBarco, x + 30, y - 22, -60, 27, null);
             }
         }
-        
-        if (juego.getEstado() == Juego.EstadoJuego.PAUSADO) {
-            dibujarPausa(g);
-        }
 
         for (CargaProfundidad carga : juego.getCargas()) {
             int x = aPixelX(carga.getPosicionX());
@@ -105,7 +101,7 @@ public class PanelJuego extends JPanel implements ActionListener {
                 int radio = (int) (50 / PROFUNDIDAD_VISIBLE * (getHeight() - ALTO_CIELO));
                 g.drawImage(imagenExplosion, x - radio, y - radio, radio * 2, radio * 2, null);
             } else {
-                g.drawImage(imagenCarga, x - 5, y - 7, 10, 14, null);
+                g.drawImage(imagenCarga, x - 5, y - 7, 10, 13, null);
             }
         }
 
@@ -116,8 +112,12 @@ public class PanelJuego extends JPanel implements ActionListener {
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, transparencia));
         g2.drawImage(imagenSubmarino, x - 18, y - 7, 36, 14, null);
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
+
+        if (juego.getEstado() == Juego.EstadoJuego.PAUSADO) {
+            dibujarPausa(g);
+        }
     }
-    
+
     private void dibujarPausa(Graphics g) {
 
         g.setColor(Color.WHITE);

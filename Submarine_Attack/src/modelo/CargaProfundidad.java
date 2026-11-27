@@ -54,13 +54,5 @@ public class CargaProfundidad extends ObjetoJuego implements EntidadMovil {
     public int getPasosDesdeExplosion() {
         return pasosDesdeExplosion;
     }
-
-    public int getProfundidadExplosion() {
-        return profundidadExplosion;
-    }
-
-    public double getVelocidadCaida() {
-        return velocidadCaida;
-    }
 }
 

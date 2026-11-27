@@ -112,31 +112,22 @@ public class ControladorJuego implements ActionListener, KeyListener {
     public void keyPressed(KeyEvent e) {
         if (juego == null || juego.terminado()) {
             return;
-        } 
-        
-        if (juego == null || juego.terminado()) {
-            return;
         }
 
         if (e.getKeyCode() == KeyEvent.VK_P) {
-
-            if (juego.getEstado() == Juego.EstadoJuego.JUGANDO) {
-
-                juego.cambiarEstado(Juego.EstadoJuego.PAUSADO);
-
-            } else if (juego.getEstado() == Juego.EstadoJuego.PAUSADO) {
-
-                juego.cambiarEstado(Juego.EstadoJuego.JUGANDO);
+            if (juego.getEstado() == EstadoJuego.JUGANDO) {
+                juego.cambiarEstado(EstadoJuego.PAUSADO);
+            } else {
+                juego.cambiarEstado(EstadoJuego.JUGANDO);
             }
-
             return;
         }
 
         // Si no estamos jugando, no permitir movimientos
-        if (juego.getEstado() != Juego.EstadoJuego.JUGANDO) {
+        if (juego.getEstado() != EstadoJuego.JUGANDO) {
             return;
         }
-        
+
         switch (e.getKeyCode()) {
             case KeyEvent.VK_UP:
                 juego.subirSubmarino();
